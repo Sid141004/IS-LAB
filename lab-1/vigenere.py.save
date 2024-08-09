@@ -1,0 +1,38 @@
+def generate_key(msg , key):
+	res = []
+	if len(msg) == len(key):
+		return key
+	else:
+		f=0
+		for i in msg:
+			res.append(key[f%len(key)])
+	return res
+def encrypt(msg , key):
+	res = []
+	curr_key = generate_key(msg,key)
+	for x in len(msg):
+	    i = msg[x]
+	    if i.isupper():
+		    res.append(((ord(i)+ord(curr_key[i])) - 2*ord('A'))%26 + ord('A'))
+elif i.islower():
+		    res.append(((ord(i)+ord(curr_key[i])) - 2*ord('a'))%26 + ord('a'))
+		else:
+			res.append(i)
+	return "".join(res)
+def decrypt(msg,key):
+	res= []
+	curr_key = generate_key(msg,key)
+	for i,j in msg,curr_key:
+		if i.isupper():
+			res.append(((ord(i)-ord(j)) - 2*ord('A'))%26 + ord('A'))
+		elif i.islower():
+			res.append(((ord(i)-ord(j)) - 2*ord('a'))%26 + ord('a'))
+		else:
+			res.append(i)
+	return "".join(res)
+msg = "the house is being sold tonight"
+key = "dollars"
+encrypted  = encrypt(msg,key)
+print(encrypted)
+decrypted=decrypt(encrypted)
+print(decrypted)

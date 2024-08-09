@@ -32,6 +32,25 @@ def encrypt(msg , key):
     return "".join(res)
 msg = "the house is being sold tonight"
 key = "g"
+def decrypt(msg , key):
+    currkey = list(key)
+    res=[]
+    i=0
+    j=0
+    while i < len(msg):
+        if msg[i].isalpha()==False:
+            res.append(msg[i])
+        else:
+            char1 = ord(msg[i])-ord('a')
+            char2 = ord(currkey[j])-ord('a')
+            temp = ( char1 - char2 + 26) % 26 + ord('a')
+            res.append(chr(temp))
+            currkey.append(chr(temp))
+            j+=1
+        i+=1
+    return "".join(res)
+
 print(msg)
-print(generate_key(msg,key))
 print(encrypt(msg,key))
+encryptt=encrypt(msg,key)
+print(decrypt(encryptt,key))
