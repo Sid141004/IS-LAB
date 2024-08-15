@@ -61,12 +61,47 @@ def encrypt_col(matrix,row1,col1,row2,col2):
     else:
         char2=matrix[row2+1][col2]
     return char1,char2
-
-msg = "The key is hidden under the door pad"
+def encrypt_rect(matrix,row1,col1,row2,col2):
+    char1=''
+    char1=matrix[row1][col2]
+    char2=''
+    char2=matrix[row2][col1]
+    
+    return char1,char2
+def search(matrix,char):
+    for i in range(5):
+        for j in range(5):
+            if matrix[i][j]==char:
+                return i,j
+def encrypt(matrix,msg):
+    res=[]
+    res1=''
+    res2=''
+    dia = digraph(msg)
+    for i in dia:
+        row1,col1 = search(matrix,i[0])
+        row2,col2 = search(matrix,i[1])
+        
+        if row1==row2:
+            res1,res2 = encrypt_row(matrix,row1,col1,row2,col2)
+        elif col1==col2:
+            res1,res2 = encrypt_col(matrix,row1,col1,row2,col2)
+        else:
+            res1,res2 = encrypt_rect(matrix,row1,col1,row2,col2)
+        
+        res1 += res2
+        res.append(res1)
+    return "".join(res)
+        
+msg = "the key is hidden under the door pad"
 key = "guidance"
 msg = remove_spaces(msg)
 print(remove_spaces(msg))
 print(digraph(msg))
 matrix = matrix(key,list1)
 print(matrix)
-#print(generateKeyTable("hello",list1))
+print(search(matrix,'u'))
+enc = encrypt(matrix,msg)
+print(enc)
+print("POCLBXDRLGIYIBCGBGLXPOBILZLTTGIY")
+print(len(msg),len(enc))
