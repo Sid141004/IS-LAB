@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Portfolio Website</title>
+    <link rel="stylesheet" href="dashbord.css" />
+    <link
+      href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+  </head>
+  <script src="script.js"></script>
+  <body>
+    <h1>
+      <a href="" class="typewrite" data-period="2000" data-type='[ "YAAAYY!!", "LOGGED IN SUCCESFULLY!", "SECURE SERVER" ]'>
+        <span class="wrap"></span>
+      </a>
+    </h1>
+    <div class="wrapper">
+      <div class="text">
+        <h1>Welcome, {{ username }}!</h1>
+      </div>
+      <div class="text">
+        <h3>Your Profile Information:</h3>
+        <p>{{ user_info }}</p>
+      </div>
+      <div class="text">
+        <h3>Your Hashed Password:</h3>
+        <p>{{ hashed_password }}</p>
+      </div>
+    </div>
+    <a class="text" href="{{ url_for('logout') }}">Logout</a>
+
+  </body>
+</html>

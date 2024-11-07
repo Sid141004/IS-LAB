@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Portfolio Website</title>
+    <link rel="stylesheet" href="style.css" />
+    <link
+      href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+  </head>
+  <script src="script.js"></script>
+  <body>
+    <h1>
+      <a href="" class="typewrite" data-period="2000" data-type='[ "Hi, WELCOME!", "SIGN UP PAGE", "SECURE SERVER" ]'>
+        <span class="wrap"></span>
+      </a>
+    </h1>
+    <div class="wrapper">
+    <form method="POST" action="{{ url_for('register') }}">
+      <label for="username">Username:</label>
+      <input type="text" id="username" name="username" required /><br /><br />
+
+      <label for="email">Email:</label>
+      <input type="email" id="email" name="email" required /><br /><br />
+
+      <label for="password">Password:</label>
+      <input
+        type="password"
+        id="password"
+        name="password"
+        required
+      /><br /><br />
+
+      <label for="info">Profile Info:</label>
+      <textarea id="info" name="info" required></textarea><br /><br />
+
+      <input type="submit" value="Register" />
+    </form>
+  </body>
+</html>
